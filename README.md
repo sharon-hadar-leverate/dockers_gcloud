@@ -104,7 +104,8 @@ gcloud container builds submit --config cloudbuild.yaml .
 ### Run the Docker image
 docker run gcr.io/sharon-project-204821/quickstart-image
 
-
+install docker try:
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04
 
 patch ends
 
