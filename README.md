@@ -50,7 +50,12 @@ Initialize Google Cloud
 gcloud init 
 ```
 PATCH START: https://cloud.google.com/container-builder/docs/quickstart-docker
-### Preparing source files
+### git clone source files (option1):
+```
+git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
+```
+or preper it like below:
+### Preparing source files (option2)
 1. Create a file named quickstart.sh with the following contents:
 ```
 vi quickstart.sh
