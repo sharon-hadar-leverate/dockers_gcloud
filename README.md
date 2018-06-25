@@ -152,6 +152,32 @@ sudo docker run hello-world
 
 
 ### Run the Docker image
+
+once you have a docker image at gitel/tweetstream:ver1 you can run it :
+```
+sudo docker run -d -p 4000:80 gitel/tweetstream:ver1
+```
+
+you can see which docker containers you have with:
+```
+sudo docker container ls
+```
+
+you can run the container with:
+```
+sudo curl 0.0.0.0:4000
+```
+
+you can remove the container with the container id:
+```
+sudo docker stop 0b9fc73f39e0
+```
+
+
+
+
+
+
 Run this command in your favourite shell and then completely log out of your account and log back in (if in doubt, reboot!):
 sudo usermod -a -G docker $USER
 
