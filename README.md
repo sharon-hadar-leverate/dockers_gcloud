@@ -52,62 +52,6 @@ Initialize Google Cloud
 ```
 gcloud init 
 ```
-PATCH START: https://cloud.google.com/container-builder/docs/quickstart-docker
-### git clone source files (option1):
-```
-git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
-```
-or preper it like below:
-### Preparing source files (option2)
-1. Create a file named quickstart.sh with the following contents:
-```
-vi quickstart.sh
-```
-and inside:
-```
-#!/bin/sh
-echo "Hello, world! The time is $(date)."
-```
-2. Create a file named Dockerfile with the following contents:
-```
-vi Dockerfile
-```
-and inside:
-```
-FROM alpine
-COPY quickstart.sh /
-CMD ["/quickstart.sh"]
-```
-3. Run the following command to make quickstart.sh executable:
-```
-chmod +x quickstart.sh
-```
-
-### Build using Dockerfile (option1)
-
-Run the following command from the directory containing quickstart.sh and Dockerfile, where [PROJECT_ID] is your GCP project ID:
-```
-gcloud container builds submit --tag gcr.io/sharon-project-204821/quickstart-image .
-```
-You've just built a Docker image named quickstart-image using a Dockerfile and pushed the image to Container Registry.
-
-### Build using a build config file (option2)
-
-create a file named cloudbuild.yaml with the following contents.
-```
-vi cloudbuild.yaml
-```
-```
-steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/quickstart-image', '.' ]
-images:
-- 'gcr.io/$PROJECT_ID/quickstart-image'
-```
-Start the build by running the following command:
-```
-gcloud container builds submit --config cloudbuild.yaml .
-```
 ### install docker:
 remove older versions of docker
 ```
@@ -148,6 +92,170 @@ sudo apt-get install docker-ce
 try to see if its working:
 ```
 sudo docker run hello-world
+```
+## Create Docker
+
+### git clone source files (option1):
+```
+git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
+```
+or preper it like below:
+### Preparing source files (option2) (https://docs.docker.com/get-started/part2/#apppy)
+1. Create a Dockerfile with the following contents:
+```
+vi Dockerfile
+```
+and inside:
+```
+# Use an official Python runtime as a parent image
+FROM python:3
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+ADD . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+#ENV TITLE World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+```
+ 2. add requirements.txt
+ ```
+vi requirements.txt
+```
+and inside :
+```
+Flask
+Redis
+```
+3. create an app:
+```
+app.py
+```
+and inside :
+```
+from flask import Flask
+from redis import Redis, RedisError
+import os
+import socket
+
+# Connect to Redis
+redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    try:
+        visits = redis.incr("counter")
+    except RedisError:
+        visits = "<i>cannot connect to Redis, counter disabled</i>"
+
+    html = "<h3>Hello {name}!</h3>" \
+           "<b>Hostname:</b> {hostname}<br/>" \
+           "<b>Visits:</b> {visits}"
+    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)
+```
+
+### Build the app:
+run the build command. 
+```
+docker build -t friendlyhello .
+```
+The built image is in the machine local Docker image registry:
+```
+$ docker image ls
+#prints:
+REPOSITORY            TAG                 IMAGE ID
+friendlyhello         latest              326387cea398
+```
+### Run the app:
+```
+docker run -p 4000:80 friendlyhello
+# or 
+$ curl http://localhost:4000
+```
+Run it in the background add -d:
+```
+docker run -d -p 4000:80 friendlyhello
+```
+To stop the process:
+get the container id:
+```
+docker container ls
+```
+```
+docker container stop <container_id>
+```
+
+# Share docker image
+Sign up at https://hub.docker.com/ 
+Log in to the Docker public registry 
+```
+docker login
+```
+Tag the image:
+```
+docker tag image username/repository:tag
+#for example:
+docker tag friendlyhello sharonhadar/get-started:part2
+```
+see the new image with:
+```
+docker image ls
+```
+upload the image to the repository:
+```
+docker push username/repository:tag
+#for example:
+docker push friendlyhello sharonhadar/get-started:part2
+```
+pull and run from the repository:
+```
+docker run -p 4000:80 username/repository:tag
+#for example:
+docker run -p 4000:80 sharonhadar/get-started:part2
+```
+
+
+
+
+### Build using Dockerfile (option1)
+
+Run the following command from the directory containing quickstart.sh and Dockerfile, where [PROJECT_ID] is your GCP project ID:
+```
+gcloud container builds submit --tag gcr.io/sharon-project-204821/quickstart-image .
+```
+You've just built a Docker image named quickstart-image using a Dockerfile and pushed the image to Container Registry.
+
+### Build using a build config file (option2)
+
+create a file named cloudbuild.yaml with the following contents.
+```
+vi cloudbuild.yaml
+```
+```
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/quickstart-image', '.' ]
+images:
+- 'gcr.io/$PROJECT_ID/quickstart-image'
+```
+Start the build by running the following command:
+```
+gcloud container builds submit --config cloudbuild.yaml .
 ```
 
 ## install mongo on ubuntu
