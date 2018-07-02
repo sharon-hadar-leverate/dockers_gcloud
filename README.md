@@ -174,7 +174,7 @@ Tag the image:
 ```
 docker tag image username/repository:tag
 #for example:
-docker tag friendlyhello sharonhadar/get-started:part2
+docker tag friendlyhello sharonhadar/tweetstream:ver1
 ```
 see the new image with:
 ```
@@ -184,13 +184,14 @@ upload the image to the repository:
 ```
 docker push username/repository:tag
 #for example:
-docker push friendlyhello sharonhadar/get-started:part2
+docker push friendlyhello sharonhadar/tweetstream:ver1
 ```
 pull and run from the repository:
 ```
 docker run -p 4000:80 username/repository:tag
 #for example:
-docker run -p 4000:80 sharonhadar/get-started:part2
+docker run -p 4000:80 sharonhadar/tweetstream:ver1
+
 ```
 
 
