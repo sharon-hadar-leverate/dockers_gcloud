@@ -70,7 +70,7 @@ mongodb://<dbuser>:<dbpassword>@ds125381.mlab.com:25381/sharonhadar_db
 ```
 Install pymongo:
 ```
-conda install -c anaconda pymongo 
+pip install pymongo 
 ```
 Create a location table with running an existing python file:
 ```
