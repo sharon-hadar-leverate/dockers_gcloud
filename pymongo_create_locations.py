@@ -42,11 +42,11 @@ SEED_DATA = [
 #-----------------------------------------------------------------------
 # util functions
 
-dbuser = 'sharonhadar'
-dbpassword = 'Aa123456'
-dbname = 'sharonhadar_db'
-host = 'ds125381.mlab.com'
-port = 25381
+dbuser = 'test'
+dbpassword = 'nnnn1858'
+dbname = 'python_twitter'
+host = 'ds121861.mlab.com'
+port = 21861
 
 def list_db(mydb, n=0):
 
@@ -105,7 +105,6 @@ def main(args):
     ### Only close the connection when your app is terminating
 
     connection.close()
-
 
 if __name__ == '__main__':
     main(sys.argv[1:])
