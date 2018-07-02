@@ -4,11 +4,8 @@ build up multiple dockers and use twitter stream api to back twits to Mongodb ba
 Create Project enable billing and Google Cloud APIs
 
 ### Add API:
-•	Compute Engine API  
-•	Cloud BigTable API  
-•	Cloud BigTable Table Admin API  
-•	Google Cloud DataProc API  
-•	Cloud BigTable Admin API  
+•	Compute Engine API   
+•	Google Cloud DataProc API   
 •	Kubernetes Engine API  
 •	Container Builder API  
 
@@ -23,7 +20,6 @@ Create Project enable billing and Google Cloud APIs
 
 ### Add IMA roles to youre user:
 •	Project Billing Manager  
-•	BigTable Administrator  
 •	Compute Admin  
 •	DataProc Editor  
 •	Project Owner  
@@ -32,13 +28,6 @@ Create Project enable billing and Google Cloud APIs
 •	Cloud Container Builder  
 •	Cloud Container Builder Editor  
 •	Cloud Container Builder Viewer  
-
-### Create a big table instance:
-•	Choose indtance name: for example - sharon-docker-bigtable  
-•	Write down the Instance id: for example - sharon-docker-bigtable  
-•	In Instance type: Choode Development  
-•	In Storage type: Choose SSD  
-•	Zone: us-east1-b  
 
 ### Open VM Instance SSH
 
