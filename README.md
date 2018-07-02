@@ -49,6 +49,12 @@ Submit order
 
 #### initialize location table 
 
+Install python pip3:
+```
+sudo apt-get update
+sudo apt-get -y install python3-pip
+```
+
 Install pymongo:
 ```
 pip install pymongo 
