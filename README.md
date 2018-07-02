@@ -67,6 +67,8 @@ To connect using a driver via the standard MongoDB URI (what's this?):
 ```
 mongodb://<dbuser>:<dbpassword>@ds125381.mlab.com:25381/sharonhadar_db
 ```
+Create user for the DB inside the databas (use same user as the account)  
+
 Install pymongo:
 ```
 pip install pymongo 
