@@ -136,24 +136,24 @@ or preper it like below:
 ### Build the app:
 run the build command. 
 ```
-docker build -t friendlyhello .
+docker build -t twitt_streamer .
 ```
 The built image is in the machine local Docker image registry:
 ```
 $ docker image ls
 #prints:
 REPOSITORY            TAG                 IMAGE ID
-friendlyhello         latest              326387cea398
+twitt_streamer         latest              326387cea398
 ```
 ### Run the app:
 ```
-docker run -p 4000:80 friendlyhello
+docker run -p 4000:80 twitt_streamer
 # or 
 $ curl http://localhost:4000
 ```
 Run it in the background add -d:
 ```
-docker run -d -p 4000:80 friendlyhello
+docker run -d -p 4000:80 twitt_streamer
 ```
 To stop the process:
 get the container id:
@@ -174,7 +174,7 @@ Tag the image:
 ```
 docker tag image username/repository:tag
 #for example:
-docker tag friendlyhello sharonhadar/tweetstream:ver1
+docker tag twitt_streamer sharonhadar/tweetstream:ver1
 ```
 see the new image with:
 ```
@@ -184,7 +184,7 @@ upload the image to the repository:
 ```
 docker push username/repository:tag
 #for example:
-docker push friendlyhello sharonhadar/tweetstream:ver1
+docker push twitt_streamer sharonhadar/tweetstream:ver1
 ```
 pull and run from the repository:
 ```
