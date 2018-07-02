@@ -54,6 +54,7 @@ gcloud init
 git clone source files:
 ```
 git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
+git pull
 ```
 
 ## install mongodb
