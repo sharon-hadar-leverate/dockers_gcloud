@@ -13,8 +13,5 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
-# Define environment variable
-#ENV TITLE World
-
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["python", "twitter_stream.py"]
