@@ -230,34 +230,6 @@ docker run -p 4000:80 sharonhadar/get-started:part2
 ```
 
 
-
-
-### Build using Dockerfile (option1)
-
-Run the following command from the directory containing quickstart.sh and Dockerfile, where [PROJECT_ID] is your GCP project ID:
-```
-gcloud container builds submit --tag gcr.io/sharon-project-204821/quickstart-image .
-```
-You've just built a Docker image named quickstart-image using a Dockerfile and pushed the image to Container Registry.
-
-### Build using a build config file (option2)
-
-create a file named cloudbuild.yaml with the following contents.
-```
-vi cloudbuild.yaml
-```
-```
-steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/quickstart-image', '.' ]
-images:
-- 'gcr.io/$PROJECT_ID/quickstart-image'
-```
-Start the build by running the following command:
-```
-gcloud container builds submit --config cloudbuild.yaml .
-```
-
 ## install mongo on ubuntu
 
 
