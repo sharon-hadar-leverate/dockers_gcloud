@@ -47,16 +47,7 @@ Create an account here: https://mlab.com/
 Create new database: choose sand box free db, choose a name for it (for example "sharonhadar_db")  
 Submit order  
 
-#### Connect to MongoDB data base
-To connect using the mongo shell:
-```
-mongo ds125381.mlab.com:25381/sharonhadar_db -u <dbuser> -p <dbpassword>
-```
-To connect using a driver via the standard MongoDB URI (what's this?):
-```
-mongodb://<dbuser>:<dbpassword>@ds125381.mlab.com:25381/sharonhadar_db
-```
-Create user for the DB inside the databas (use same user as the account)  
+#### initialize location table 
 
 Install pymongo:
 ```
