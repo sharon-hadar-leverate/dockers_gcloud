@@ -51,6 +51,10 @@ Initialize Google Cloud
 ```
 gcloud init 
 ```
+git clone source files:
+```
+git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
+```
 
 ## install mongodb
 
@@ -75,7 +79,7 @@ pip install pymongo
 ```
 Create a location table with running an existing python file:
 ```
-python py_mongodb_create_locations_table.py
+python create_locations.py
 ```
 
 ### install docker:
