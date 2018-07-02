@@ -131,74 +131,7 @@ sudo docker run hello-world
 git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
 ```
 or preper it like below:
-### Preparing source files (option2) (https://docs.docker.com/get-started/part2/#apppy)
-1. Create a Dockerfile with the following contents:
-```
-vi Dockerfile
-```
-and inside:
-```
-# Use an official Python runtime as a parent image
-FROM python:3
-
-# Set the working directory to /app
-WORKDIR /app
-
-# Copy the current directory contents into the container at /app
-ADD . /app
-
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
-
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-#ENV TITLE World
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
-```
- 2. add requirements.txt
- ```
-vi requirements.txt
-```
-and inside :
-```
-Flask
-Redis
-```
-3. create an app:
-```
-app.py
-```
-and inside :
-```
-from flask import Flask
-from redis import Redis, RedisError
-import os
-import socket
-
-# Connect to Redis
-redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
-
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    try:
-        visits = redis.incr("counter")
-    except RedisError:
-        visits = "<i>cannot connect to Redis, counter disabled</i>"
-
-    html = "<h3>Hello {name}!</h3>" \
-           "<b>Hostname:</b> {hostname}<br/>" \
-           "<b>Visits:</b> {visits}"
-    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
-```
+##### Preparing source files (option2) (https://docs.docker.com/get-started/part2/#apppy)
 
 ### Build the app:
 run the build command. 
