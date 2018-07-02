@@ -56,7 +56,7 @@ gcloud init
 ## install mongodb
 
 Create an account here: https://mlab.com/   
-Create new database choose a name for it (for example "sharonhadar_db")  
+Create new database: choose sand box free db, choose a name for it (for example "sharonhadar_db")  
 Submit order  
 
 #### Connect to MongoDB data base
