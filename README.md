@@ -232,4 +232,31 @@ docker run -p 4000:80 sharonhadar/get-started:part2
 
 ## install mongo on ubuntu
 
+Create an account here: https://mlab.com/   
+Create new database choose a name for it (for example "sharonhadar_db")  
+Submit order  
+
+#### Connect to MongoDB data base
+To connect using the mongo shell:
+```
+mongo ds125381.mlab.com:25381/sharonhadar_db -u <dbuser> -p <dbpassword>
+```
+To connect using a driver via the standard MongoDB URI (what's this?):
+```
+mongodb://<dbuser>:<dbpassword>@ds125381.mlab.com:25381/sharonhadar_db
+```
+Install pymongo:
+```
+conda install -c anaconda pymongo 
+```
+Create a location table with running an existing python file:
+```
+python py_mongodb_create_locations_table.py
+```
+
+
+
+
+  
+
 
