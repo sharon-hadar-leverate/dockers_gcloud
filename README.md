@@ -101,12 +101,7 @@ sudo docker run hello-world
 ```
 ## Create Docker
 
-### git clone source files (option1):
-```
-git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
-```
-or preper it like below:
-##### Preparing source files (option2) (https://docs.docker.com/get-started/part2/#apppy)
+##### (https://docs.docker.com/get-started/part2/#apppy)
 
 ### Build the app:
 run the build command. 
