@@ -42,11 +42,11 @@ SEED_DATA = [
 #-----------------------------------------------------------------------
 # util functions
 
-dbuser = 'test'
-dbpassword = 'nnnn1858'
-dbname = 'python_twitter'
-host = 'ds121861.mlab.com'
-port = 21861
+dbuser = 'sharonhadar'
+dbpassword = 'Aa123456'
+dbname = 'sharonhadar_db'
+host = 'ds125381.mlab.com'
+port = 25381
 
 def list_db(mydb, n=0):
 
