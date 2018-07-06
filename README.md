@@ -193,7 +193,7 @@ sudo docker run -p 4000:80 sharonhadar/tweetstream:ver1
 
 #### from now on use the GCP shell 
 
-Pnce the cluster is ready -> click connect.
+Once the cluster is ready -> click connect.
 Command-line access:
 ```
 gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project sharon-project-204821
