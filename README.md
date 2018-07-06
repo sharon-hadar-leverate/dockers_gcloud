@@ -259,13 +259,14 @@ A simple query could be:
 In order to use aggregation queries, a mongoclient is necessary..
 Download RoboMongo from https://robomongo.org/download  
 After installing it, MongoDB connections window will open.  
-Choose "Create",
+Choose "Create".  
+To get the connection information go back to mLab,  
 Under mLab database https://mlab.com/databases/sharonhadar_db, there are the connection information
 ```  
 To connect using a driver via the standard MongoDB URI (what's this?):
 mongodb://<dbuser>:<dbpassword>@ds125381.mlab.com:25381/sharonhadar_db
 ```
-In robomongo, in the Connection tab enter following in the Address box:
+In robomongo, under the Connection tab enter following in the Address box:
 ```
 ds125381.mlab.com
 ```
@@ -283,15 +284,29 @@ And for the port box
 ### quering examples:
 
 
-#2: What is the most popular words regardless of the city:
-      
-      
+#1: What is the most popular words regardless of the city:
+```
+db.twit_by_location.aggregate([
+    {"$group" : {_id:"$token", count:{$sum:"$count"}}},
+    {"$sort" : { "count": -1 } }
+])
+```
 
-#1: What words appears in all cities?
+#2: What words appears in all cities?
+```
+db.twit_by_location.aggregate([
+    {"$group" : {_id:"$token", count:{$sum:1}}},
+    {"$match" : { "count" : 5 } }
+])
+```
 
 #3: What words appear only in one city
-
-
+```
+db.twit_by_location.aggregate([
+    {"$group" : {_id:"$token", count:{$sum:1}}},
+    {"$match" : { "count" : 1 } }
+])
+```
   
 
 
