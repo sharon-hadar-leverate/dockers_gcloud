@@ -1,5 +1,5 @@
 # dockers_gcloud
-### Build a docker image that streams twits to Mongodb base on location and word, run it on multiple vm with Kubernete cluster and run queries on Mongodb with RoboMongo and mLab.
+### Build a docker image that streams twits to Mongodb base on location and word, run it on multiple vm with Kubernete cluster and query Mongodb with RoboMongo and mLab.
 
 Create Project enable billing and Google Cloud APIs (or use Ubuntu)
 
