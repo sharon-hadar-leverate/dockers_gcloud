@@ -154,7 +154,7 @@ sudo docker container stop <container_id>
 After running the image, it would change one of the locations in the database to "taken".
 Go to the locations databse @ https://mlab.com/ and make sure all location "taken" property are set to zero.
 
-# Share docker image
+## Share docker image
 Sign up at https://hub.docker.com/ 
 Log in to the Docker public registry 
 ```
