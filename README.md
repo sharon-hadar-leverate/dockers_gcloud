@@ -223,6 +223,71 @@ kubectl get services
 ```
 
 
+## Quering mLab
+
+mLab let you the option to use MongoDB Extended JSON in strict mode.
+This option doesnt include aggregetion quering and map reduce.  
+It is perfect for simple quering and checking   
+Go to twit_by_location collection @ https://mlab.com/databases/sharonhadar_db/collections/twit_by_location
+
+An index in the collection looks like:
+{
+    "_id": {
+        "$oid": "5b3a8a3e815e8f8c5127ceaa"
+    },
+    "location": "United States of America",
+    "token": "short",
+    "count": 1
+}
+
+To see the collection as a table format choose 'table' and wirte:
+{
+    "location": "location",
+    "token": "token",
+    "count": "count"
+}
+
+A simple quering can be:  
+1# show all tokens by descending order:
+      choose "start new search"
+      under "sort order" wirte: {"count":-1}
+
+## Quering RoboMongo
+#### Prepare RoboMongo
+In order to use aggregation queries, a mongoclient is necessary..
+Download RoboMongo from https://robomongo.org/download  
+After installing it, MongoDB connections window will open.  
+Choose "Create",
+Under mLab database https://mlab.com/databases/sharonhadar_db, there are the connection information
+```  
+To connect using a driver via the standard MongoDB URI (what's this?):
+mongodb://<dbuser>:<dbpassword>@ds125381.mlab.com:25381/sharonhadar_db
+```
+In robomongo, in the Connection tab enter following in the Address box:
+```
+ds125381.mlab.com
+```
+And for the port box
+```
+25381
+```
+- Go to the Authentication tab.  
+- Click on 'Perform authentication'.  
+- Enter database name (sharonhadar_db), username, and password.   
+- Let the auth mechanism be SCRAM-SHA-1  
+
+#### Quering in RoboMongo
+
+### quering examples:
+
+
+#2: What is the most popular words regardless of the city:
+      
+      
+
+#1: What words appears in all cities?
+
+#3: What words appear only in one city
 
 
   
