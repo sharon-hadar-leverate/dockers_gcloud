@@ -291,6 +291,7 @@ db.twit_by_location.aggregate([
     {"$sort" : { "count": -1 } }
 ])
 ```
+![alt text](https://github.com/sharon-hadar-leverate/dockers_gcloud/blob/master/assets/query1.PNG)
 
 #2: What words appears in all cities?
 ```
@@ -299,6 +300,7 @@ db.twit_by_location.aggregate([
     {"$match" : { "count" : 5 } }
 ])
 ```
+![alt text](https://github.com/sharon-hadar-leverate/dockers_gcloud/blob/master/assets/query2.PNG)
 
 #3: What words appear only in one city
 ```
@@ -307,6 +309,6 @@ db.twit_by_location.aggregate([
     {"$match" : { "count" : 1 } }
 ])
 ```
-  
+![alt text](https://github.com/sharon-hadar-leverate/dockers_gcloud/blob/master/assets/query3.PNG)
 
 
