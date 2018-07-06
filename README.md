@@ -1,7 +1,7 @@
 # dockers_gcloud
-build up multiple dockers and use twitter stream api to back twits to Mongodb base on location
+### Build up an docker image that use twitter stream api to back twits to Mongodb base on location and run it on multiple vm with Kubernete cluster 
 
-Create Project enable billing and Google Cloud APIs
+Create Project enable billing and Google Cloud APIs (or use Ubuntu)
 
 ### Add API:
 •	Compute Engine API   
@@ -29,7 +29,7 @@ Create Project enable billing and Google Cloud APIs
 •	Cloud Container Builder Editor  
 •	Cloud Container Builder Viewer  
 
-### Open VM Instance SSH
+### Open VM Instance SSH or use Ubuntu
 
 Initialize Google Cloud
 ```
