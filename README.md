@@ -231,6 +231,7 @@ It is perfect for simple quering and checking
 Go to twit_by_location collection @ https://mlab.com/databases/sharonhadar_db/collections/twit_by_location
 
 An index in the collection looks like:
+```
 {
     "_id": {
         "$oid": "5b3a8a3e815e8f8c5127ceaa"
@@ -239,18 +240,19 @@ An index in the collection looks like:
     "token": "short",
     "count": 1
 }
-
+```
 To see the collection as a table format choose 'table' and wirte:
+```
 {
     "location": "location",
     "token": "token",
     "count": "count"
 }
-
+```
 A simple quering can be:  
-1# show all tokens by descending order:
-      choose "start new search"
-      under "sort order" wirte: {"count":-1}
+1# show all tokens by descending order:  
+      choose "start new search"  
+      under "sort order" wirte: {"count":-1}  
 
 ## Quering RoboMongo
 #### Prepare RoboMongo
