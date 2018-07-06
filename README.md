@@ -198,17 +198,23 @@ Command-line access:
 ```
 gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project sharon-project-204821
 ```
-
+Git clone source files:
+```
+git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
+```
+Go to project directory and ensure it is up to date:
+```
+cd dockers_gcloud
+git pull
+```
 Create a Service
 ```
 kubectl create -f service.yaml
 ```
-
 Create a Replication Controller
 ```
 kubectl create -f controller.yaml
 ```
-
 Inspect your cluster, List the pods, replication controllers, and services
 ```
 kubectl get pods
