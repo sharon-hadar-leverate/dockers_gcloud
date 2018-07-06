@@ -225,9 +225,9 @@ kubectl get services
 
 ## Quering mLab
 
-mLab let you the option to use MongoDB Extended JSON in strict mode.  
+mLab has the option to use MongoDB Extended JSON in strict mode.  
 This option doesnt include aggregetion quering and map reduce.  
-It is useful for simple quering and checking.   
+It is still very useful for simple quering and checking.   
 Go to twit_by_location collection @ https://mlab.com/databases/sharonhadar_db/collections/twit_by_location
 
 An index in the collection looks like:
@@ -249,7 +249,7 @@ To see the collection as a table format choose 'table' and wirte:
     "count": "count"
 }
 ```
-A simple quering can be:  
+A simple query could be:  
 1# show all tokens by descending order:  
       choose "start new search"  
       under "sort order" wirte: {"count":-1}  
