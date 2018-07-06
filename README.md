@@ -13,7 +13,7 @@ Create Project enable billing and Google Cloud APIs
 ### Create a VM instance
 •	GCP menu-> Computing engine->VM instance->create  
 •	Choose zone same one as before: us-east1-b  
-•	Choose Machine type: 2vCPUs.  
+•	Choose Machine type: 1vCPUs.  
 •	Choose boot disk: ubuntu 16.04, boot disk type SSD disk  
 •	in Identity and API access: Allow full access to all Cloud APIs  
 •	In Firewall: allow both access, HTTP and HTTPs  
@@ -35,19 +35,26 @@ Initialize Google Cloud
 ```
 gcloud init 
 ```
-git clone source files:
+Git clone source files:
 ```
 git clone https://github.com/sharon-hadar-leverate/dockers_gcloud.git
+```
+Go to project directory and ensure it is up to date:
+```
+cd dockers_gcloud
 git pull
 ```
 
-## install mongodb
+## Install mongodb
+#### Create database @ mlab
 
-Create an account here: https://mlab.com/   
-Create new database: choose sand box free db, choose a name for it (for example "sharonhadar_db")  
-Submit order  
+- Create an account here: https://mlab.com/   
+- Create new database: choose sand box free db, choose a name for it (for example "sharonhadar_db")
+- Create a user to the database (you can use the same account details for it)
+- Submit order  
 
-#### initialize location table 
+#### Initialize location table 
+##### Skip this part if youy allready have a location table.
 
 Install python pip3:
 ```
@@ -64,8 +71,8 @@ Create a location table with running an existing python file:
 python create_locations.py
 ```
 
-### install docker:
-remove older versions of docker
+## install docker:
+Remove older versions of docker
 ```
 sudo apt-get update
 sudo apt-get remove docker docker-engine docker.i
@@ -81,8 +88,9 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 Verify that you now have the key with the fingerprint 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88
 ```
-$ sudo apt-key fingerprint 0EBFCD88
+sudo apt-key fingerprint 0EBFCD88
 
+# should print:
 pub   4096R/0EBFCD88 2017-02-22
       Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
 uid                  Docker Release (CE deb) <docker@docker.com>
@@ -95,81 +103,118 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 ```
-install docker -ce
+Install docker -ce
 ```
 sudo apt-get update
 sudo apt-get install docker-ce
 ```
 
-try to see if its working:
+Try to see if its working:
 ```
 sudo docker run hello-world
+# should print  "...Hello from Docker!..."
 ```
+
 ## Create Docker
 
 ##### (https://docs.docker.com/get-started/part2/#apppy)
 
 ### Build the app:
-run the build command. 
+Run the build command. 
 ```
-docker build -t twitt_streamer .
+sudo docker build -t twitt_streamer .
 ```
 The built image is in the machine local Docker image registry:
 ```
-$ docker image ls
-#prints:
+sudo docker image ls
+# should print:
 REPOSITORY            TAG                 IMAGE ID
 twitt_streamer         latest              326387cea398
 ```
-### Run the app:
+### Run the app: (optional)
+#### This is only for checking that the image would work since it would run on the Kubernete cluster.
+
 ```
-docker run -p 4000:80 twitt_streamer
+sudo docker run -p 4000:80 twitt_streamer
 # or 
-$ curl http://localhost:4000
+curl http://localhost:4000
 ```
 Run it in the background add -d:
 ```
-docker run -d -p 4000:80 twitt_streamer
+sudo docker run -d -p 4000:80 twitt_streamer
 ```
 To stop the process:
 get the container id:
 ```
-docker container ls
+sudo docker container ls
 ```
 ```
-docker container stop <container_id>
+sudo docker container stop <container_id>
 ```
+After running the image, it would change one of the locations in the database to "taken".
+Go to the locations databse @ https://mlab.com/ and make sure all location "taken" property are set to zero.
 
 # Share docker image
 Sign up at https://hub.docker.com/ 
 Log in to the Docker public registry 
 ```
-docker login
+sudo docker login
 ```
 Tag the image:
 ```
-docker tag image username/repository:tag
+sudo docker tag image username/repository:tag
 #for example:
-docker tag twitt_streamer sharonhadar/tweetstream:ver1
+sudo docker tag twitt_streamer sharonhadar/tweetstream:ver1
 ```
-see the new image with:
+See the new image with:
 ```
-docker image ls
+sudo docker image ls
 ```
-upload the image to the repository:
+Upload the image to the repository:
 ```
-docker push username/repository:tag
+sodu docker push username/repository:tag
 #for example:
-docker push twitt_streamer sharonhadar/tweetstream:ver1
+sudo docker push sharonhadar/tweetstream:ver1
 ```
-pull and run from the repository:
+Pull and run from the repository: (optional to see if its works)
 ```
-docker run -p 4000:80 username/repository:tag
+sudo docker run -p 4000:80 username/repository:tag
 #for example:
-docker run -p 4000:80 sharonhadar/tweetstream:ver1
+sudo docker run -p 4000:80 sharonhadar/tweetstream:ver1
+```
 
+## Create a Kubernete cluster
+
+### At GCP go to Kubernetes engine and create cluster
+•	choose zonal us-east1-b  
+•	use 1 cpu machine type  
+•	node image ubuntu  
+•	size 5   
+
+#### from now on use the GCP shell 
+
+Pnce the cluster is ready -> click connect.
+Command-line access:
+```
+gcloud container clusters get-credentials cluster-1 --zone us-east1-b --project sharon-project-204821
 ```
 
+Create a Service
+```
+kubectl create -f service.yaml
+```
+
+Create a Replication Controller
+```
+kubectl create -f controller.yaml
+```
+
+Inspect your cluster, List the pods, replication controllers, and services
+```
+kubectl get pods
+kubectl get rc
+kubectl get services
+```
 
 
 
