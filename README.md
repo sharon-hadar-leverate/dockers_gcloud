@@ -1,5 +1,5 @@
 # dockers_gcloud
-### Build a docker image that use twitter stream api to back twits to Mongodb base on location, run it on multiple vm with Kubernete cluster and run queries on it.
+### Build a docker image that use twitter stream api to back twits to Mongodb base on location, run it on multiple vm with Kubernete cluster and run queries with RoboMongo and mLab.
 
 Create Project enable billing and Google Cloud APIs (or use Ubuntu)
 
