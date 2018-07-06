@@ -282,7 +282,7 @@ And for the port box
 #### Quering in RoboMongo
 
 ### quering examples:
-
+#### I've searched for the word "world" in 06.07.2018 when FIFA World Cup just entered quarter final stage 
 
 #1: What is the most popular words regardless of the city:
 ```
