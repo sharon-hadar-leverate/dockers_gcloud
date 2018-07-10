@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: tweetstream-master
+  name: tweetstream_exam-master
   # these labels can be applied automatically 
   # from the labels in the pod template if not set
   labels:
-    app: tweetstream
+    app: tweetstream_exam
     role: master
     tier: backend
 spec:
@@ -21,13 +21,13 @@ spec:
   template:
     metadata:
       labels:
-        app: tweetstream
+        app: tweetstream_exam
         role: master
         tier: backend
     spec:
       containers:
       - name: master
-        image: sharonhadar/tweetstream:ver1
+        image: sharonhadar/tweetstream_exam:ver1
         resources:
           requests:
             cpu: 100m
