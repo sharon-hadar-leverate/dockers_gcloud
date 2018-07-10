@@ -14,4 +14,4 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 EXPOSE 80
 
 # Run app.py when the container launches
-CMD ["python", "twitter_stream.py"]
+CMD ["python", "python_docker_exam.py"]
