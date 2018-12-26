@@ -29,17 +29,17 @@ WORD_TO_TRACK = ['world']
 WORD_TOKENIZER = nltk.RegexpTokenizer('[a-zA-Z]\w+')
 
 TWITTER_VAR = {
-    "consumer_key": u'5KHfdzjZpsSef0pDjHSIUqxkb',
-    "consumer_secret": u'HiKeFDDaYK1iY3R3nnRVZOfPVDNuYySm0MXDYV2kS878xIAvSP',
-    "access_token": u'762963428973617152-snH3bENqYdoN4MRi8d02GrxFUO9Gi1O',
-    "access_token_secret": u'COoonSphtHDQtcArpdJbg1q0CLozML4yZS91pbenuk5yL'}
+    "consumer_key": u'X',
+    "consumer_secret": u'X',
+    "access_token": u'X-X',
+    "access_token_secret": u'X'}
 
 MONGO_VAR = {
-    "dbuser": 'sharonhadar',
-    "dbpassword": 'Aa123456',
-    "dbname": 'sharonhadar_db',
-    "host": 'ds125381.mlab.com',
-    "port": 25381}
+    "dbuser": 'X',
+    "dbpassword": 'X',
+    "dbname": 'X',
+    "host": 'X',
+    "port": X}
 
 
 def connect_to_db():
